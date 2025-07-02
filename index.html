@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Solar System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="solar-system"></canvas>
+    </div>
+    
+    <div id="info-panel">
+        <h1>3D Solar System</h1>
+        <div id="controls">
+            <button id="play-pause">Pause</button>
+            <button id="reset-camera">Reset Camera</button>
+            <button id="theme-toggle">🌙 Dark Mode</button>
+            <div class="speed-control">
+                <label for="global-speed-slider">Global Animation Speed:</label>
+                <input type="range" id="global-speed-slider" min="0.1" max="3" value="1" step="0.1">
+                <span id="global-speed-value">1x</span>
+            </div>
+        </div>
+        
+        <div id="planet-controls">
+            <h3>Individual Planet Speed Controls</h3>
+            <div id="planet-sliders"></div>
+        </div>
+        
+        <div id="planet-info">
+            <h3>Planet Information</h3>
+            <div id="selected-planet">Click on a planet to see details</div>
+        </div>
+    </div>
+    
+    <!-- Tooltip for planet hover -->
+    <div id="planet-tooltip" class="tooltip"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
