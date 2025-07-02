@@ -319,7 +319,6 @@ class SolarSystem {
         window.addEventListener('resize', () => this.onWindowResize());
         
         // Mouse interaction
-        this.renderer.domElement.addEventListener('click', (event) => this.onMouseClick(event));
         this.renderer.domElement.addEventListener('mousemove', (event) => this.onMouseMove(event));
         
         // Control buttons
@@ -333,6 +332,24 @@ class SolarSystem {
         globalSpeedSlider.addEventListener('input', (e) => {
             this.animationSpeed = parseFloat(e.target.value);
             globalSpeedValue.textContent = `${this.animationSpeed}x`;
+        });
+        
+        // Mobile panel toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const infoPanel = document.getElementById('info-panel');
+        mobileToggle.addEventListener('click', () => {
+            infoPanel.classList.toggle('mobile-open');
+            // Change hamburger to X when open
+            mobileToggle.textContent = infoPanel.classList.contains('mobile-open') ? '✕' : '☰';
+        });
+        
+        // Close mobile panel when clicking on canvas (only on mobile)
+        this.renderer.domElement.addEventListener('click', (event) => {
+            if (window.innerWidth <= 768 && infoPanel.classList.contains('mobile-open')) {
+                infoPanel.classList.remove('mobile-open');
+                mobileToggle.textContent = '☰';
+            }
+            this.onMouseClick(event);
         });
     }
     

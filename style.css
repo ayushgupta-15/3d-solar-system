@@ -311,6 +311,16 @@ body.light-theme #global-speed-value {
     color: #1976d2;
 }
 
+body.light-theme .mobile-toggle {
+    background: rgba(255, 255, 255, 0.9);
+    color: #1976d2;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .mobile-toggle:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
 
 /* Enhanced mobile controls */
 body.mobile {
@@ -350,25 +360,78 @@ body.mobile {
     }
 }
 
+/* Mobile Panel Toggle */
+.mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    border: none;
+    color: #ffd700;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 15;
+    font-size: 18px;
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s ease;
+}
+
+.mobile-toggle:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
+    .mobile-toggle {
+        display: block;
+    }
+    
     #info-panel {
-        top: 10px;
+        top: -100%;
         left: 10px;
         right: 10px;
         min-width: auto;
         max-width: none;
         padding: 15px;
+        transition: top 0.3s ease;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    
+    #info-panel.mobile-open {
+        top: 70px;
     }
     
     #info-panel h1 {
-        font-size: 20px;
+        font-size: 18px;
+        margin-bottom: 15px;
     }
     
     #controls button {
         padding: 8px 12px;
         font-size: 12px;
         margin: 3px;
+    }
+    
+    #planet-sliders {
+        max-height: 120px;
+    }
+    
+    #planet-controls {
+        margin: 15px 0;
+    }
+    
+    #planet-info {
+        padding-top: 10px;
+    }
+    
+    #selected-planet {
+        min-height: 40px;
+        font-size: 13px;
     }
 }
 
